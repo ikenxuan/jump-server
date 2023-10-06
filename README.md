@@ -15,6 +15,7 @@ yarn install
 ```
 
 ## 使用
+当作Miao-Yunzai插件的不用看，插件会跟随喵崽启动而启动
 ```
 # 前台启动
 node app
