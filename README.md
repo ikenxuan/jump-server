@@ -1,10 +1,13 @@
-# bbs验证码短链跳转服务
+# bbs手动验证地址重定向服务
 
-## 安装
+## 安装（二选其一）
 
 ```
-# 拉取
-git clone https://github.com/ikenxuan/jump-server.git
+# 独立服务
+git clone --depth=1 https://github.com/ikenxuan/jump-server.git
+
+# Miao-Yunzai插件
+git clone --depth=1 https://github.com/ikenxuan/jump-server.git ./plugins/jump-server/
 ```
 ```
 # 安装依赖 yarn 、pnpm 或 npm
@@ -22,4 +25,4 @@ npm run start
 ```
 默认监听 `0.0.0.0`:3001
 
-服务器开放端口即可使用
+服务器开放端口即可对外访问
