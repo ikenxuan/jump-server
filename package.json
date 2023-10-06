@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "type": "module",
-    "main": "app.js",
+    "main": "index.js",
     "scripts": {
-      "app": "node app.js",
+      "app": "node index.js",
       "start": "pm2 start pm2.json",
       "stop": "pm2 stop pm2.json",
       "docker-build": "docker build -t media:v1.2 ."

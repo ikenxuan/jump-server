@@ -9,6 +9,12 @@ server.listen(serverPort, '0.0.0.0', err => {
   console.log(`开始监听 ${serverPort} 端口`)
 })
 
+server.get('/', (req, reply) => {
+  reply.send({
+    code: 200,
+    message: 'bbs手动验证地址重定向服务',
+  })
+})
 let targetUrl
 server.post('/createverify', (req, reply) => {
   const requesBody = JSON.parse(req.body)
@@ -34,7 +40,7 @@ server.get('/geetest', (req, reply) => {
       <body>
         <script>
           // 弹出浏览器弹窗
-          alert('确定后请一定要进行验证，不然这个验证码就失效了！需要重新获取');
+          alert('确定后请一定要进行验证，不然这个验证码就失效了！');
           
           // 等待用户点击确认后进行重定向
           window.location.href = '${targetUrl}';
@@ -48,10 +54,10 @@ server.get('/geetest', (req, reply) => {
       .send(popupHTML)
   } else {
     // Token验证失败的响应
-    reply.code(403).send(JSON.stringify({
+    reply.code(403).send({
       code: 403,
       message: 'Token不存在或已过期'
-    }, null, 2))
+    }, null, 2)
   }
 })
 
@@ -97,7 +103,7 @@ function verifyToken(token) {
   const now = Date.now()
   const tokenData = tokenMap[token]
 
-  if (!tokenData || now - tokenData.createTime > 60 * 1000) {
+  if (!tokenData || now - tokenData.createTime > 120 * 1000) {
     return false; //不存在则无效
   }
 
