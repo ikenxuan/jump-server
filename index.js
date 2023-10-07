@@ -2,12 +2,11 @@ import fastify from "fastify"
 //开鸡
 export const Server = fastify()
 
-const serverPort = 3001
 const server = fastify({
   logger: false,
 })
 server.listen({
-  port: 3000,
+  port: 3001,
   host: '0.0.0.0' 
 })
 server.get('/', (req, reply) => {
