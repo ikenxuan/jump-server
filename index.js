@@ -6,11 +6,10 @@ const serverPort = 3001
 const server = fastify({
   logger: false,
 })
-server.listen(serverPort, '0.0.0.0', err => {
-  if (err) throw err
-  console.log(`开始监听 ${serverPort} 端口`)
+server.listen({
+  port: 3000,
+  host: '0.0.0.0' 
 })
-
 server.get('/', (req, reply) => {
   reply.send({
     code: 200,
