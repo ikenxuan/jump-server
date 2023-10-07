@@ -1,8 +1,8 @@
 
-import { Server } from "./index.js"
+import server from "./index.js"
 
 try {
-    Server();
+    server();
   } catch (err) {
     console.error(err);
     process.exit(1); 
