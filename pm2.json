@@ -2,7 +2,8 @@
     "apps": [
       {
         "name": "jump-server",
-        "script": "./index.js",
+        "script": "./app.js",
+        "max_memory_restart": "512M",
         "env": {
           "NODE_ENV": "development"
         },

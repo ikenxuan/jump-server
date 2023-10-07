@@ -1,8 +1,10 @@
 import fastify from "fastify"
 //开鸡
+export const Server = fastify()
+
 const serverPort = 3001
 const server = fastify({
-  logger: true,
+  logger: false,
 })
 server.listen(serverPort, '0.0.0.0', err => {
   if (err) throw err

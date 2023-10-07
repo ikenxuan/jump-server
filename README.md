@@ -21,8 +21,16 @@ yarn install
 node app
 ```
 ```
+# 后台注销
+npm run stop
+```
+```
 # 后台驻留
 npm run start
+```
+```
+# 输出日志
+npm run log
 ```
 默认监听 `0.0.0.0`:3001
 
