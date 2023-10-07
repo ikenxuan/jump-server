@@ -1,4 +1,9 @@
 
 import { Server } from "./index.js"
 
-Server()
+try {
+    Server();
+  } catch (err) {
+    console.error(err);
+    process.exit(1); 
+  }

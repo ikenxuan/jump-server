@@ -1,6 +1,6 @@
 import fastify from "fastify"
 //开鸡
-export const Server = fastify()
+const Server = fastify()
 
 const server = fastify({
   logger: false,
@@ -109,3 +109,4 @@ function verifyToken(token) {
 
   return true; //有效
 }
+export default Server()
