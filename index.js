@@ -50,9 +50,10 @@ server.get('/geetest', (req, reply) => {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      </head>
+        <title>重定向页面</title>
+        </head>
       <body>
-        <script title="重定向页面">
+        <script>
           // 弹出浏览器弹窗
           alert('确定后将会跳转到验证地址，请一定要进行验证，不然这个验证码就失效了，需重新获取');
           
