@@ -2,11 +2,11 @@
     "name": "jump-server",
     "version": "1.0.0",
     "description": "",
-    "type": "module",
-    "main": "app.js",
+    "main": "./app.js",
     "scripts": {
       "app": "node app.js",
       "start": "pm2 start pm2.json",
+      "restart": "pm2 restart pm2.json",
       "stop": "pm2 stop pm2.json",
       "log": "pm2 log jump-server",
       "docker-build": "docker build -t media:v1.2 ."

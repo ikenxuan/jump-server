@@ -1,16 +1,13 @@
 import fastify from "fastify"
 //开鸡
 const server = fastify({
-  logger: false,
+  logger: true,
 })
-/*server.listen({
-  port: 1145,
-  host: '0.0.0.0' 
-})*/
 server.get('/', (req, reply) => {
   reply.send({
     code: 200,
-    message: 'bbs手动验证地址重定向服务',
+    message: '请在 data 中传递值 url 发送 POST 请求到/createverify后返回Token。并带上请携带参数 e 访问 /geetest 从而重定向到新的网址',
+    info: 'bbs手动验证地址重定向服务'
   })
 })
 let targetUrl
@@ -22,9 +19,28 @@ server.post('/createverify', (req, reply) => {
     token
   })
 })
+server.get('/createverify', (req, reply) => {
+  reply
+  .code(200)
+  .send({
+    code: 200,
+    message: '请在 data 中传递值 url 发送 POST 请求到此页面后返回Token',
+    info: 'bbs手动验证地址重定向服务'
+  })
+})
 server.get('/geetest', (req, reply) => {
-  const token = req.query.e;
-  const valid = verifyToken(token);
+  const token = req.query.e
+  if(token === undefined) {
+    reply
+    .code(403)
+    .send({
+      code: 403,
+      message: '传递参数不完整！缺少参数 e',
+      info: 'bbs手动验证地址重定向服务'
+    })
+  }
+
+  const valid = verifyToken(token)
 
   if (valid) {
     //构建HTML响应
@@ -52,10 +68,13 @@ server.get('/geetest', (req, reply) => {
       .send(popupHTML)
   } else {
     // Token验证失败的响应
-    reply.code(403).send({
+    reply
+    .code(403)
+    .send({
       code: 403,
-      message: 'Token不存在或已过期'
-    }, null, 2)
+      message: `Token: ${token} 不存在或已过期`,
+      info: 'bbs手动验证地址重定向服务'
+    })
   }
 })
 
@@ -102,9 +121,9 @@ function verifyToken(token) {
   const tokenData = tokenMap[token]
 
   if (!tokenData || now - tokenData.createTime > 120 * 1000) {
-    return false; //不存在则无效
+    return false //不存在则无效
   }
 
-  return true; //有效
+  return true //有效
 }
 export default server

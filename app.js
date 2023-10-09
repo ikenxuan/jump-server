@@ -7,12 +7,12 @@ try {
       host: '0.0.0.0' 
     }, (err, address) => {
       if (err) {
-        console.error(err);
-        process.exit(1);
+        console.error(err)
+        process.exit(1)
       }
-      console.log(`Server listening at ${address}`);
-    });
+      console.log(`重定向服务正在监听 ${address} 端口！`)
+    })
   } catch (err) {
-    console.error(err);
-    process.exit(1); 
+    console.error(err)
+    process.exit(1)
   }
