@@ -12,6 +12,7 @@
         },
         "instances": 1,
         "restart_delay" : 5000,
+        "max_restarts" : 3,
         "log_date_format" : "YYYY-MM-DD HH:mm Z",
         "log_file"   : "./logs/child.log",
         "error_file" : "./logs/child-err.log",
